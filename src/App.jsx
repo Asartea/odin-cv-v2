@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import InputColumn from './components/InputColumn';
+import PreviewColumn from './components/PreviewColumn';
 function App() {
 
     const [personalData, setPersonalData] = useState({'firstName': 'John', 'lastName': 'Doe', 'email': 'test@example.com', 'phone': '123-456-7890'});
@@ -11,6 +12,7 @@ function App() {
         <>
             <h1>Resume Builder</h1>
             <InputColumn personalData={personalData} educationData={educationData} workExperienceData={workExperienceData} handlePersonalDataChange={handlePersonalDataChange} handleSectionChange={handleSectionChange} />
+            <PreviewColumn personalData={personalData} educationData={educationData} workExperienceData={workExperienceData} />
 
         </>
     );
