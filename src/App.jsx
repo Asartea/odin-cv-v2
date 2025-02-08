@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import EducationSection from './components/education/Education.jsx';
-import WorkSection from './components/work/Work.jsx';
-import PersonalSection from './components/personal/Personal.jsx';
-
+import InputColumn from './components/InputColumn';
 function App() {
 
     const [personalData, setPersonalData] = useState({'firstName': 'John', 'lastName': 'Doe', 'email': 'test@example.com', 'phone': '123-456-7890'});
-    const [educationData, setEducationData] = useState({[crypto.randomUUID()]: {'degree': 'Bachelors', 'school': 'University of Utah', 'location': 'Salt Lake City', 'start': '2010', 'end': '2014'}});
-    const [workExperienceData, setWorkExperienceData] = useState({[crypto.randomUUID()]: {'company': 'Google', 'position': 'Software Engineer', 'location': 'Mountain View', 'start': '2014', 'end': '2018'}});
+    const [educationData, setEducationData] = useState({[crypto.randomUUID()]: {'degree': 'Bachelors', 'school': 'University of Utah', 'location': 'Salt Lake City', 'start': '2010', 'end': '2014', 'subject': 'Computer Science', 'description': ''}});
+    const [workExperienceData, setWorkExperienceData] = useState({[crypto.randomUUID()]: {'company': 'Google', 'position': 'Software Engineer', 'location': 'Mountain View', 'start': '2014', 'end': '2018', 'description': ''}});
 
 
     return (
         <>
             <h1>Resume Builder</h1>
-            <PersonalSection personal={personalData} onChange={handlePersonalDataChange} />
-            <EducationSection educations={educationData} onChange={handleSectionChange} />
-            <WorkSection experiences={workExperienceData} onChange={handleSectionChange} />
+            <InputColumn personalData={personalData} educationData={educationData} workExperienceData={workExperienceData} handlePersonalDataChange={handlePersonalDataChange} handleSectionChange={handleSectionChange} />
+
         </>
     );
 

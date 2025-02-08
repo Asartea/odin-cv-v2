@@ -13,6 +13,7 @@ function WorkForm (props) {
                 <InputGroup id="location" labelText="Location" value={location} onChange={onChange} />
                 <InputGroup id="start" labelText="Start" value={start} onChange={onChange} />
                 <InputGroup id="end" labelText="End" value={end} onChange={onChange} />
+                <InputGroup id="description" labelText="Description" value={props.data.description} onChange={onChange} optional={true}/>
             </form>
         </div>
     );
