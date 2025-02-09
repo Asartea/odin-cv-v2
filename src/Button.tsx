@@ -6,14 +6,12 @@ type ButtonProps = {
     className?: string;
 };
 
-function Button({
-    onClick,
-    text,
-    className
-}: ButtonProps) {
+function Button({ onClick, text, className }: ButtonProps) {
     return (
-        <button onClick={onClick} className={className}>{text}</button>
-    )
+        <button onClick={onClick} className={className}>
+            {text}
+        </button>
+    );
 }
 
 export default Button;
