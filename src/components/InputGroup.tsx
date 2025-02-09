@@ -1,13 +1,16 @@
-function InputGroup({
-    id,
-    placeholder,
-    labelText,
-    value,
-    optional = false,
-    recommended = true,
-    onChange,
-    dataKey
-}) {
+type InputGroupProps = {
+    id: string;
+    placeholder?: string;
+    labelText: string;
+    value: string;
+    optional?: boolean;
+    recommended?: boolean;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    dataKey: string;
+};
+
+function InputGroup(props: InputGroupProps) {
+    const { id, placeholder, labelText, value, optional, recommended, onChange, dataKey } = props;
     return (
         <div className="input-group">
             <label htmlFor={id}>
