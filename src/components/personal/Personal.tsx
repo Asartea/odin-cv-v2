@@ -1,5 +1,5 @@
-import { PersonalData } from '../../App';
-import PersonalForm from './PersonalForm.js';
+import { PersonalData } from "../../App";
+import PersonalForm from "./PersonalForm.js";
 
 type PersonalSectionProps = {
     personal: PersonalData;
