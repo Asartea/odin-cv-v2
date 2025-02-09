@@ -84,7 +84,9 @@ function App() {
         </div>
     );
 
-    function handlePersonalDataChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handlePersonalDataChange(
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) {
         e.preventDefault();
         const key = e.target.id as keyof typeof personalData;
         const data = structuredClone(personalData);
@@ -92,7 +94,9 @@ function App() {
         setPersonalData(data);
     }
 
-    function handleSectionChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSectionChange(
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) {
         e.preventDefault();
         const formElement = e.target.closest("form");
         if (!formElement) {
@@ -121,10 +125,6 @@ function App() {
             });
             console.log(workExperienceData);
         }
-    }
-
-    function somethingIHateReact() {
-        console.log("God I hate it here");
     }
 
     function addSection(type: string) {

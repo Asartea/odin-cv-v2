@@ -5,7 +5,9 @@ import { EducationDataSection } from "../../App";
 
 type EducationSectionProps = {
     educations: EducationDataSection;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     addSection: (section: string) => void;
 };
 function EducationSection(props: EducationSectionProps) {

@@ -3,7 +3,9 @@ import PersonalForm from "./PersonalForm.js";
 
 type PersonalSectionProps = {
     personal: PersonalData;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 };
 function PersonalSection(props: PersonalSectionProps) {
     const { personal, onChange } = props;

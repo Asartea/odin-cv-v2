@@ -4,7 +4,9 @@ import { WorkExperienceDataSection } from "../../App";
 
 type WorkSectionProps = {
     experiences: WorkExperienceDataSection;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     addSection: (section: string) => void;
 };
 function WorkSection({ experiences, onChange, addSection }: WorkSectionProps) {
