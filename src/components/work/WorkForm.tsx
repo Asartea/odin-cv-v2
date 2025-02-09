@@ -4,7 +4,9 @@ import InputGroup from "../InputGroup";
 type WorkFormProps = {
     data: WorkExperienceData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 };
 
 function WorkForm(props: WorkFormProps) {
@@ -52,6 +54,7 @@ function WorkForm(props: WorkFormProps) {
                 />
                 <InputGroup
                     id="description"
+                    type="textarea"
                     labelText="Description"
                     value={props.data.description}
                     onChange={onChange}

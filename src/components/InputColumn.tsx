@@ -11,8 +11,12 @@ type InputColumnProps = {
     personalData: PersonalData;
     educationData: EducationDataSection;
     workExperienceData: WorkExperienceDataSection;
-    handlePersonalDataChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSectionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handlePersonalDataChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    handleSectionChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     addSection: (type: string) => void;
 };
 

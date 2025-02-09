@@ -4,7 +4,9 @@ import { PersonalData } from "../../App.js";
 type PersonalFormProps = {
     data: PersonalData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 };
 function PersonalForm(props: PersonalFormProps) {
     const { firstName, lastName, email, phone } = props.data;
@@ -30,6 +32,7 @@ function PersonalForm(props: PersonalFormProps) {
                 />
                 <InputGroup
                     id="email"
+                    type="email"
                     dataKey="email"
                     labelText="Email"
                     value={email}
@@ -37,6 +40,7 @@ function PersonalForm(props: PersonalFormProps) {
                 />
                 <InputGroup
                     id="phone"
+                    type="tel"
                     dataKey="phone"
                     labelText="Phone"
                     value={phone}

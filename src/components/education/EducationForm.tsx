@@ -4,7 +4,9 @@ import InputGroup from "../InputGroup";
 type EducationFormProps = {
     data: EducationData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 };
 function EducationForm(props: EducationFormProps) {
     const { degree, subject, school, location, start, end, description } =
@@ -59,6 +61,7 @@ function EducationForm(props: EducationFormProps) {
                 />
                 <InputGroup
                     id="description"
+                    type="textarea"
                     labelText="Description"
                     value={description}
                     onChange={onChange}
