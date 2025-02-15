@@ -11,8 +11,13 @@ type InputColumnProps = {
     personalData: PersonalData;
     educationData: EducationDataSection;
     workExperienceData: WorkExperienceDataSection;
-    handlePersonalDataChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSectionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handlePersonalDataChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    handleSectionChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
     addSection: (type: string) => void;
 };
 
@@ -24,6 +29,7 @@ function InputColumn(props: InputColumnProps) {
         handlePersonalDataChange,
         handleSectionChange,
         addSection,
+        onCollapse,
     } = props;
 
     return (
@@ -35,11 +41,13 @@ function InputColumn(props: InputColumnProps) {
             <EducationSection
                 educations={educationData}
                 onChange={handleSectionChange}
+                onCollapse={onCollapse}
                 addSection={addSection}
             />
             <WorkSection
                 experiences={workExperienceData}
                 onChange={handleSectionChange}
+                onCollapse={onCollapse}
                 addSection={addSection}
             />
         </div>

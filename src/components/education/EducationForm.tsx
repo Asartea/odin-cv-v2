@@ -4,17 +4,24 @@ import InputGroup from "../InputGroup";
 type EducationFormProps = {
     data: EducationData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
 };
 function EducationForm(props: EducationFormProps) {
     const { degree, subject, school, location, start, end, description } =
         props.data;
-    const { id, onChange } = props;
+    const { id, onChange, onCollapse } = props;
 
     return (
         <div>
-            <h2>Education Form</h2>
-            <form id={id} data-type="education">
+            <form
+                id={id}
+                data-type="education"
+                data-key={id}
+                onClick={onCollapse}
+            >
                 <InputGroup
                     id="degree"
                     labelText="Degree"

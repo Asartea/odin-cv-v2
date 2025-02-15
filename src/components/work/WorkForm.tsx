@@ -4,17 +4,24 @@ import InputGroup from "../InputGroup";
 type WorkFormProps = {
     data: WorkExperienceData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
+    onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
 function WorkForm(props: WorkFormProps) {
     const { company, position, location, start, end } = props.data;
-    const { id, onChange } = props;
+    const { id, onChange, onCollapse } = props;
 
     return (
         <div>
-            <h2>Work Form</h2>
-            <form id={id} data-type="work-experience">
+            <form
+                id={id}
+                data-type="work-experience"
+                data-key={id}
+                onClick={onCollapse}
+            >
                 <InputGroup
                     id="company"
                     labelText="Company"

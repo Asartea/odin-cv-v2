@@ -4,7 +4,9 @@ import { PersonalData } from "../../App.js";
 type PersonalFormProps = {
     data: PersonalData;
     id: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
 };
 function PersonalForm(props: PersonalFormProps) {
     const { firstName, lastName, email, phone } = props.data;

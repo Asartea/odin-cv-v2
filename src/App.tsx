@@ -19,9 +19,7 @@ type EducationData = {
     end: string;
     subject: string;
     description: string;
-};
-type EducationDataSection = {
-    [key: string]: EducationData;
+    collapsed: boolean;
 };
 
 type WorkExperienceData = {
@@ -31,20 +29,34 @@ type WorkExperienceData = {
     start: string;
     end: string;
     description: string;
+    collapsed: boolean;
 };
 
-type WorkExperienceDataSection = {
-    [key: string]: WorkExperienceData;
+type Section<T> = {
+    [key: string]: T;
 };
+
+type WorkExperienceDataSection = Section<WorkExperienceData>;
+
+type EducationDataSection = Section<EducationData>;
+
+type DataSection =
+    | { type: "personal"; data: PersonalData }
+    | { type: "education"; data: EducationDataSection }
+    | { type: "work-experience"; data: WorkExperienceDataSection };
+
+type Data =
+    | { type: "education"; data: EducationData }
+    | { type: "work-experience"; data: WorkExperienceData };
 
 function App() {
-    const [personalData, setPersonalData] = useState({
+    const [personalData, setPersonalData] = useState<PersonalData>({
         firstName: "John",
         lastName: "Doe",
         email: "test@example.com",
         phone: "123-456-7890",
     });
-    const [educationData, setEducationData] = useState({
+    const [educationData, setEducationData] = useState<EducationDataSection>({
         [crypto.randomUUID()]: {
             degree: "Bachelors",
             school: "University of Utah",
@@ -53,18 +65,21 @@ function App() {
             end: "2014",
             subject: "Computer Science",
             description: "",
+            collapsed: true,
         },
     });
-    const [workExperienceData, setWorkExperienceData] = useState({
-        [crypto.randomUUID()]: {
-            company: "Google",
-            position: "Software Engineer",
-            location: "Mountain View",
-            start: "2014",
-            end: "2018",
-            description: "",
-        },
-    });
+    const [workExperienceData, setWorkExperienceData] =
+        useState<WorkExperienceDataSection>({
+            [crypto.randomUUID()]: {
+                company: "Google",
+                position: "Software Engineer",
+                location: "Mountain View",
+                start: "2014",
+                end: "2018",
+                description: "",
+                collapsed: true,
+            },
+        });
 
     return (
         <div className="content-container">
@@ -75,6 +90,7 @@ function App() {
                 handlePersonalDataChange={handlePersonalDataChange}
                 handleSectionChange={handleSectionChange}
                 addSection={addSection}
+                onCollapse={toggleCollapsed}
             />
             <PreviewColumn
                 personalData={personalData}
@@ -84,7 +100,9 @@ function App() {
         </div>
     );
 
-    function handlePersonalDataChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handlePersonalDataChange(
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) {
         e.preventDefault();
         const key = e.target.id as keyof typeof personalData;
         const data = structuredClone(personalData);
@@ -92,7 +110,9 @@ function App() {
         setPersonalData(data);
     }
 
-    function handleSectionChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSectionChange(
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) {
         e.preventDefault();
         const formElement = e.target.closest("form");
         if (!formElement) {
@@ -104,6 +124,9 @@ function App() {
         if (type === "education") {
             const newEducationData = structuredClone(educationData[key]);
             const data_key = e.target.id as keyof typeof newEducationData;
+            if (data_key == "collapsed") {
+                return;
+            }
             newEducationData[data_key] = e.target.value;
             setEducationData({
                 ...educationData,
@@ -114,6 +137,9 @@ function App() {
                 workExperienceData[key],
             );
             const data_key = e.target.id as keyof typeof newWorkExperienceData;
+            if (data_key == "collapsed") {
+                return;
+            }
             newWorkExperienceData[data_key] = e.target.value;
             setWorkExperienceData({
                 ...workExperienceData,
@@ -123,14 +149,14 @@ function App() {
         }
     }
 
-    function somethingIHateReact() {
-        console.log("God I hate it here");
-    }
-
     function addSection(type: string) {
         if (type === "education") {
+            const newEducationData = collapseAllInSection(
+                structuredClone(educationData),
+            ) as EducationDataSection;
+
             setEducationData({
-                ...educationData,
+                ...newEducationData,
                 [crypto.randomUUID()]: {
                     degree: "",
                     school: "",
@@ -139,11 +165,15 @@ function App() {
                     end: "",
                     subject: "",
                     description: "",
+                    collapsed: false,
                 },
             });
         } else if (type === "work-experience") {
+            const newWorkExperienceData = collapseAllInSection(
+                structuredClone(workExperienceData),
+            ) as WorkExperienceDataSection;
             setWorkExperienceData({
-                ...workExperienceData,
+                ...newWorkExperienceData,
                 [crypto.randomUUID()]: {
                     company: "",
                     position: "",
@@ -151,8 +181,45 @@ function App() {
                     start: "",
                     end: "",
                     description: "",
+                    collapsed: false,
                 },
             });
+        }
+    }
+
+    function collapseAllInSection(
+        section: EducationDataSection | WorkExperienceDataSection,
+    ) {
+        for (const value of Object.values(section)) {
+            value.collapsed = true;
+        }
+        return section;
+    }
+
+    function toggleCollapsed(e: React.MouseEvent<HTMLElement>) {
+        e.preventDefault();
+        if (e.target instanceof HTMLInputElement) {
+            return;
+        }
+        const { type, key } = e.currentTarget.dataset;
+        if (!type || !key) {
+            console.error("Could not find type or key");
+            return;
+        }
+        if (type === "education") {
+            const oldValue = educationData[key].collapsed;
+            const newEducationDataSection = collapseAllInSection(
+                structuredClone(educationData),
+            ) as EducationDataSection;
+            newEducationDataSection[key].collapsed = !oldValue;
+            setEducationData(newEducationDataSection);
+        } else if (type === "work-experience") {
+            const oldValue = workExperienceData[key].collapsed;
+            const newWorkExperienceDataSection = collapseAllInSection(
+                structuredClone(workExperienceData),
+            ) as WorkExperienceDataSection;
+            newWorkExperienceDataSection[key].collapsed = !oldValue;
+            setWorkExperienceData(newWorkExperienceDataSection);
         }
     }
 }
@@ -164,4 +231,6 @@ export {
     EducationDataSection,
     WorkExperienceData,
     WorkExperienceDataSection,
+    DataSection,
+    Data,
 };
