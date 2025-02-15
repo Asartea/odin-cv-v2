@@ -8,6 +8,7 @@ import {
     ProjectDataSection,
 } from "../App";
 import ProjectPreview from "./projects/ProjectPreview";
+import "../styles/preview.css";
 
 type PreviewColumnProps = {
     personalData: PersonalData;

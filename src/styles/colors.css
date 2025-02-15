@@ -1,0 +1,22 @@
+/* Taken from tailwinds colors (https://tailwindcss.com/docs/colors#default-color-palette)*/
+
+body {
+    --color-emerald-50: oklch(.979 .021 166.113);
+    --color-emerald-100: oklch(.95 .052 163.051);
+    --color-emerald-200: oklch(.905 .093 164.15);
+    --color-emerald-300: oklch(.845 .143 164.978);
+    --color-emerald-400: oklch(.765 .177 163.223);
+    --color-emerald-500: oklch(.696 .17 162.48);
+    --color-emerald-600: oklch(.596 .145 163.225);
+    --color-emerald-700: oklch(.508 .118 165.612);
+    --color-emerald-800: oklch(.432 .095 166.913);
+    --color-emerald-900: oklch(.378 .077 168.94);
+    --color-emerald-950: oklch(.262 .051 172.552);
+
+    --color-primary: var(--color-emerald-500);
+    --color-secondary: var(--color-emerald-300);
+
+    --text-color: oklch(.141 .005 285.823);
+    --text-color-white: oklch(.967 .001 286.375);
+    --text-color-light: oklch(.141 .005 285.823);
+}

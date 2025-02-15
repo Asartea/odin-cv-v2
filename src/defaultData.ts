@@ -3,13 +3,14 @@ const defaultData = {
         firstName: "John",
         lastName: "Doe",
         email: "john.doe@example.com",
-        phone: "555-555-5555"
+        phone: "555-555-5555",
+        website: "https://example.com",
     },
     education: {
         [crypto.randomUUID()]: {
             degree: "Bachelor of Science",
-            school: "University of California, Berkeley",
-            location: "Berkeley",
+            school: "Example University",
+            location: "Null Island",
             start: "2010",
             end: "2014",
             subject: "Computer Science",
@@ -19,11 +20,20 @@ const defaultData = {
     },
     workExperience: {
         [crypto.randomUUID()]: {
-            company: "Google",
+            company: "Example Company",
             position: "Software Engineer",
-            location: "Mountain View",
+            location: "Null Island",
             start: "2014",
             end: "2018",
+            description: "",
+            collapsed: true,
+        },
+        [crypto.randomUUID()]: {
+            company: "Another Company",
+            position: "Senior Software Engineer",
+            location: "Null Island",
+            start: "2018",
+            end: "2021",
             description: "",
             collapsed: true,
         }
@@ -33,14 +43,14 @@ const defaultData = {
             title: "Project 1",
             description: "Description of project 1",
             github: "https://github.com",
-            demo: "https://demo.com",
+            demo: "https://example.com",
             collapsed: true,
         },
         [crypto.randomUUID()]: {
             title: "Project 2",
             description: "Description of project 2",
             github: "https://github.com",
-            demo: "https://demo.com",
+            demo: "https://example.com",
             collapsed: true,
         }
     }

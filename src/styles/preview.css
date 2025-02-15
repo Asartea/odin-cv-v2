@@ -1,0 +1,82 @@
+@import url('colors.css');
+
+.preview-column {
+    --accent-color: var(--color-emerald-500);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        justify-self: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        color: var(--accent-color);
+        border-bottom: 1px solid var(--accent-color);
+    }
+
+    .preview {
+        padding: 0em 1em;
+    }
+
+    .personal-preview {
+        background-color: var(--color-emerald-500);
+
+        padding: 1em;
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+        }
+
+        a {
+            color: var(--text-color-white)
+        }
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em 0;
+
+        .position-and-company,
+        .degree-and-school {
+
+            h3,
+            p {
+                margin: 0;
+            }
+
+            :last-child {
+                margin-top: .5em;
+                font-style: italic;
+            }
+        }
+
+        .time-and-location {
+            p {
+                margin: 0;
+                text-align: end;
+            }
+
+            :last-child {
+                margin-top: .5em;
+                font-style: italic;
+            }
+        }
+
+        .title,
+        .links {
+
+            h3,
+            p {
+                margin: 0;
+            }
+        }
+
+    }
+
+}

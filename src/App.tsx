@@ -9,6 +9,7 @@ type PersonalData = {
     lastName: string;
     email: string;
     phone: string;
+    website: string;
 };
 
 type EducationData = {
