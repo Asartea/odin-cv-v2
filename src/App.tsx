@@ -198,7 +198,13 @@ function App() {
 
     function toggleCollapsed(e: React.MouseEvent<HTMLElement>) {
         e.preventDefault();
-        if (e.target instanceof HTMLInputElement) {
+        if (
+            !(
+                e.target instanceof HTMLHeadingElement ||
+                e.target instanceof HTMLFormElement ||
+                e.target instanceof HTMLDivElement
+            )
+        ) {
             return;
         }
         const { type, key } = e.currentTarget.dataset;

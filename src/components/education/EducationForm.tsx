@@ -71,6 +71,7 @@ function EducationForm(props: EducationFormProps) {
                     onChange={onChange}
                     optional={true}
                     dataKey={"description"}
+                    inputType="textarea"
                 />
             </form>
         </div>

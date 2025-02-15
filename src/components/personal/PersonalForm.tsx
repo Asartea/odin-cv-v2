@@ -36,6 +36,7 @@ function PersonalForm(props: PersonalFormProps) {
                     labelText="Email"
                     value={email}
                     onChange={onChange}
+                    inputType="email"
                 />
                 <InputGroup
                     id="phone"
@@ -43,6 +44,7 @@ function PersonalForm(props: PersonalFormProps) {
                     labelText="Phone"
                     value={phone}
                     onChange={onChange}
+                    inputType="tel"
                 />
             </form>
         </div>

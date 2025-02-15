@@ -11,7 +11,7 @@ type WorkFormProps = {
 };
 
 function WorkForm(props: WorkFormProps) {
-    const { company, position, location, start, end } = props.data;
+    const { company, position, location, start, end, description } = props.data;
     const { id, onChange, onCollapse } = props;
 
     return (
@@ -60,10 +60,11 @@ function WorkForm(props: WorkFormProps) {
                 <InputGroup
                     id="description"
                     labelText="Description"
-                    value={props.data.description}
+                    value={description}
                     onChange={onChange}
                     optional={true}
                     dataKey="description"
+                    inputType="textarea"
                 />
             </form>
         </div>
