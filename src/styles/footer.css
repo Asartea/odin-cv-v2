@@ -1,0 +1,12 @@
+@import url('./colors.css');
+
+footer {
+    padding: 1.5em;
+    margin-top: 2em;
+    text-align: center;
+    background-color: var(--color-emerald-500);
+
+    a {
+        color: var(--text-color-white);
+    }
+}

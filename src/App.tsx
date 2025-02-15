@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputColumn from "./components/InputColumn.js";
 import PreviewColumn from "./components/PreviewColumn.js";
+import Footer from "./components/footer/Footer.js";
 import "./styles/index.css";
 import defaultData from "./defaultData";
 
@@ -71,24 +72,27 @@ function App() {
     const [projectData, setProjectData] = useState(defaultData.projects);
 
     return (
-        <div className="content-container">
-            <InputColumn
-                personalData={personalData}
-                educationData={educationData}
-                workExperienceData={workExperienceData}
-                projectData={projectData}
-                handlePersonalDataChange={handlePersonalDataChange}
-                handleSectionChange={handleSectionChange}
-                addSection={addSection}
-                onCollapse={toggleCollapsed}
-            />
-            <PreviewColumn
-                personalData={personalData}
-                educationData={educationData}
-                workExperienceData={workExperienceData}
-                projectData={projectData}
-            />
-        </div>
+        <>
+            <div className="content-container">
+                <InputColumn
+                    personalData={personalData}
+                    educationData={educationData}
+                    workExperienceData={workExperienceData}
+                    projectData={projectData}
+                    handlePersonalDataChange={handlePersonalDataChange}
+                    handleSectionChange={handleSectionChange}
+                    addSection={addSection}
+                    onCollapse={toggleCollapsed}
+                />
+                <PreviewColumn
+                    personalData={personalData}
+                    educationData={educationData}
+                    workExperienceData={workExperienceData}
+                    projectData={projectData}
+                />
+            </div>
+            <Footer></Footer>
+        </>
     );
 
     function handlePersonalDataChange(
