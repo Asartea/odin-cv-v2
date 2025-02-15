@@ -155,7 +155,6 @@ function App() {
     }
 
     function addSection(e: React.MouseEvent<HTMLButtonElement>) {
-        toggleNewSectionButton(e);
         const section = e.currentTarget.closest(".section") as HTMLDivElement;
         const type = section.dataset.type;
         if (type === "education") {
@@ -237,7 +236,6 @@ function App() {
             console.error("Could not find type or key");
             return;
         }
-        toggleNewSectionButton(e);
         if (type === "education") {
             const oldValue = educationData[key].collapsed;
             const newEducationDataSection = collapseAllInSection(
@@ -260,21 +258,6 @@ function App() {
             newProjectDataSection[key].collapsed = !oldValue;
             setProjectData(newProjectDataSection);
         }
-    }
-
-    function toggleNewSectionButton(e: React.MouseEvent<HTMLElement>) {
-        if (!e.target || !(e.target instanceof HTMLElement)) {
-            return;
-        }
-        const newSectionButton = e.target
-            .closest(".section")
-            ?.querySelector(".add-section") as HTMLButtonElement | null;
-        console.log(newSectionButton);
-        if (!newSectionButton) {
-            return;
-        }
-        newSectionButton.style.display =
-            newSectionButton.style.display === "none" ? "block" : "none";
     }
 }
 
