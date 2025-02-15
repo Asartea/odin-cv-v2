@@ -11,6 +11,8 @@ type PersonalData = {
     email: string;
     phone: string;
     website: string;
+    linkedin: string;
+    github: string;
 };
 
 type EducationData = {
@@ -63,13 +65,35 @@ type Data =
     | { type: "work-experience"; data: WorkExperienceData }
     | { type: "projects"; data: ProjectData };
 
+// Taken from https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
+function useStickyState<T>(defaultValue: T, key: string) {
+    const [value, setValue] = React.useState(() => {
+        const stickyValue = window.localStorage.getItem(key);
+        return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
+    });
+    React.useEffect(() => {
+        window.localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+    return [value, setValue] as [T, React.Dispatch<React.SetStateAction<T>>];
+}
+
 function App() {
-    const [personalData, setPersonalData] = useState(defaultData.personal);
-    const [educationData, setEducationData] = useState(defaultData.education);
-    const [workExperienceData, setWorkExperienceData] = useState(
-        defaultData.workExperience,
+    const [personalData, setPersonalData] = useStickyState(
+        defaultData.personal,
+        "personalData",
     );
-    const [projectData, setProjectData] = useState(defaultData.projects);
+    const [educationData, setEducationData] = useStickyState(
+        defaultData.education,
+        "educationData",
+    );
+    const [workExperienceData, setWorkExperienceData] = useStickyState(
+        defaultData.workExperience,
+        "workExperienceData",
+    );
+    const [projectData, setProjectData] = useStickyState(
+        defaultData.projects,
+        "projectData",
+    );
 
     return (
         <>
