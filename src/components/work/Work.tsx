@@ -25,7 +25,7 @@ function WorkSection({
                 value.collapsed ? (
                     <CollapsedForm
                         key={key}
-                        title={value.company}
+                        title={value.position}
                         dataKey={key}
                         data={{ type: "work-experience", data: value }}
                         onClick={onCollapse}

@@ -30,7 +30,7 @@ function PersonalPreview({ personal }: PersonalPreviewProps) {
                     return (
                         <div key={label}>
                             <a href={link} target="_blank" rel="noreferrer">
-                                {info}
+                                {label}
                             </a>
                         </div>
                     );

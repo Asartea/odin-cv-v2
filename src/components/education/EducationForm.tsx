@@ -16,7 +16,6 @@ function EducationForm(props: EducationFormProps) {
 
     return (
         <div>
-            <h3>{school}</h3>
             <form
                 id={id}
                 data-type="education"

@@ -22,7 +22,7 @@ function EducationSection(props: EducationSectionProps) {
                 value.collapsed ? (
                     <CollapsedForm
                         key={key}
-                        title={value.school}
+                        title={value.degree}
                         dataKey={key}
                         data={{ type: "education", data: value }}
                         onClick={onCollapse}
