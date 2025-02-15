@@ -5,23 +5,28 @@ import {
     EducationDataSection,
     PersonalData,
     WorkExperienceDataSection,
+    ProjectDataSection,
 } from "../App";
+import ProjectPreview from "./projects/ProjectPreview";
 
 type PreviewColumnProps = {
     personalData: PersonalData;
     educationData: EducationDataSection;
     workExperienceData: WorkExperienceDataSection;
+    projectData: ProjectDataSection;
 };
 function PreviewColumn({
     personalData,
     educationData,
     workExperienceData,
+    projectData,
 }: PreviewColumnProps) {
     return (
         <div className="column preview-column">
             <PersonalPreview personal={personalData} />
             <EducationPreview educations={educationData} />
             <WorkPreview experiences={workExperienceData} />
+            <ProjectPreview projects={projectData} />
         </div>
     );
 }

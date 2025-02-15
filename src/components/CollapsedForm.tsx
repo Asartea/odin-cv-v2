@@ -7,6 +7,20 @@ type CollapsedFormProps = {
 };
 
 function CollapsedForm({ data, dataKey, onClick }: CollapsedFormProps) {
+    let title;
+    switch (data.type) {
+        case "education":
+            title = data.data.school;
+            break;
+        case "work-experience":
+            title = data.data.company;
+            break;
+        case "projects":
+            title = data.data.title;
+            break;
+        default:
+            title = "";
+    }
     return (
         <div
             className="collapsed-form"
@@ -14,11 +28,7 @@ function CollapsedForm({ data, dataKey, onClick }: CollapsedFormProps) {
             data-type={data.type}
             onClick={onClick}
         >
-            {data.type === "education" ? (
-                <h3>{data.data.school}</h3>
-            ) : data.type === "work-experience" ? (
-                <h3>{data.data.company}</h3>
-            ) : null}
+            {title && <h3>{title}</h3>}
         </div>
     );
 }

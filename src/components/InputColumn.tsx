@@ -1,16 +1,19 @@
-import EducationSection from "./education/Education.js";
-import WorkSection from "./work/Work.js";
-import PersonalSection from "./personal/Personal.jsx";
+import EducationSection from "./education/Education";
+import WorkSection from "./work/Work";
+import ProjectSection from "./projects/Projects";
+import PersonalSection from "./personal/Personal";
 import {
     PersonalData,
     EducationDataSection,
     WorkExperienceDataSection,
+    ProjectDataSection,
 } from "../App";
 
 type InputColumnProps = {
     personalData: PersonalData;
     educationData: EducationDataSection;
     workExperienceData: WorkExperienceDataSection;
+    projectData: ProjectDataSection;
     handlePersonalDataChange: (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
@@ -26,6 +29,7 @@ function InputColumn(props: InputColumnProps) {
         personalData,
         educationData,
         workExperienceData,
+        projectData,
         handlePersonalDataChange,
         handleSectionChange,
         addSection,
@@ -46,6 +50,12 @@ function InputColumn(props: InputColumnProps) {
             />
             <WorkSection
                 experiences={workExperienceData}
+                onChange={handleSectionChange}
+                onCollapse={onCollapse}
+                addSection={addSection}
+            />
+            <ProjectSection
+                projects={projectData}
                 onChange={handleSectionChange}
                 onCollapse={onCollapse}
                 addSection={addSection}

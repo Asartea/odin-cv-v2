@@ -32,6 +32,14 @@ type WorkExperienceData = {
     collapsed: boolean;
 };
 
+type ProjectData = {
+    title: string;
+    description: string;
+    github: string;
+    demo: string;
+    collapsed: boolean;
+};
+
 type Section<T> = {
     [key: string]: T;
 };
@@ -40,14 +48,18 @@ type WorkExperienceDataSection = Section<WorkExperienceData>;
 
 type EducationDataSection = Section<EducationData>;
 
+type ProjectDataSection = Section<ProjectData>;
+
 type DataSection =
     | { type: "personal"; data: PersonalData }
     | { type: "education"; data: EducationDataSection }
-    | { type: "work-experience"; data: WorkExperienceDataSection };
+    | { type: "work-experience"; data: WorkExperienceDataSection }
+    | { type: "projects"; data: ProjectDataSection };
 
 type Data =
     | { type: "education"; data: EducationData }
-    | { type: "work-experience"; data: WorkExperienceData };
+    | { type: "work-experience"; data: WorkExperienceData }
+    | { type: "projects"; data: ProjectData };
 
 function App() {
     const [personalData, setPersonalData] = useState<PersonalData>({
@@ -81,12 +93,23 @@ function App() {
             },
         });
 
+    const [projectData, setProjectData] = useState<ProjectDataSection>({
+        [crypto.randomUUID()]: {
+            title: "Project 1",
+            description: "",
+            github: "",
+            demo: "",
+            collapsed: true,
+        },
+    });
+
     return (
         <div className="content-container">
             <InputColumn
                 personalData={personalData}
                 educationData={educationData}
                 workExperienceData={workExperienceData}
+                projectData={projectData}
                 handlePersonalDataChange={handlePersonalDataChange}
                 handleSectionChange={handleSectionChange}
                 addSection={addSection}
@@ -96,6 +119,7 @@ function App() {
                 personalData={personalData}
                 educationData={educationData}
                 workExperienceData={workExperienceData}
+                projectData={projectData}
             />
         </div>
     );
@@ -145,7 +169,17 @@ function App() {
                 ...workExperienceData,
                 [key]: newWorkExperienceData,
             });
-            console.log(workExperienceData);
+        } else if (type === "projects") {
+            const newProjectData = structuredClone(projectData[key]);
+            const data_key = e.target.id as keyof typeof newProjectData;
+            if (data_key == "collapsed") {
+                return;
+            }
+            newProjectData[data_key] = e.target.value;
+            setProjectData({
+                ...projectData,
+                [key]: newProjectData,
+            });
         }
     }
 
@@ -184,11 +218,28 @@ function App() {
                     collapsed: false,
                 },
             });
+        } else if (type === "projects") {
+            const newProjectData = collapseAllInSection(
+                structuredClone(projectData),
+            ) as ProjectDataSection;
+            setProjectData({
+                ...newProjectData,
+                [crypto.randomUUID()]: {
+                    title: "",
+                    description: "",
+                    github: "",
+                    demo: "",
+                    collapsed: false,
+                },
+            });
         }
     }
 
     function collapseAllInSection(
-        section: EducationDataSection | WorkExperienceDataSection,
+        section:
+            | EducationDataSection
+            | WorkExperienceDataSection
+            | ProjectDataSection,
     ) {
         for (const value of Object.values(section)) {
             value.collapsed = true;
@@ -226,6 +277,13 @@ function App() {
             ) as WorkExperienceDataSection;
             newWorkExperienceDataSection[key].collapsed = !oldValue;
             setWorkExperienceData(newWorkExperienceDataSection);
+        } else if (type === "projects") {
+            const oldValue = projectData[key].collapsed;
+            const newProjectDataSection = collapseAllInSection(
+                structuredClone(projectData),
+            ) as ProjectDataSection;
+            newProjectDataSection[key].collapsed = !oldValue;
+            setProjectData(newProjectDataSection);
         }
     }
 }
@@ -237,6 +295,8 @@ export {
     EducationDataSection,
     WorkExperienceData,
     WorkExperienceDataSection,
+    ProjectData,
+    ProjectDataSection,
     DataSection,
     Data,
 };
