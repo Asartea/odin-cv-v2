@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "jsx": "react-jsx",
         /* Visit https://aka.ms/tsconfig to read more about this file */
 
         /* Projects */
@@ -13,8 +12,11 @@
 
         /* Language and Environment */
         "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-        // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
-        // "jsx": "preserve",                                /* Specify what JSX code is generated. */
+        "lib": [
+            "ES2024",
+            "DOM"
+        ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
+        "jsx": "react-jsx" /* Specify what JSX code is generated. */,
         // "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */
         // "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
         // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */

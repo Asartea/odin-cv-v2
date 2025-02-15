@@ -14,7 +14,7 @@ const defaultData = {
             start: "2010",
             end: "2014",
             subject: "Computer Science",
-            description: "",
+            description: "Some content here \n And some more \n I also learned something about Computer Science",
             collapsed: true,
         }
     },

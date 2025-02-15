@@ -1,4 +1,5 @@
 import { EducationDataSection } from "../../App";
+import PrettyPrintDescription from "../PrettyPrintDescription";
 
 type EducationPreviewProps = {
     educations: EducationDataSection;
@@ -8,7 +9,6 @@ function EducationPreview({ educations }: EducationPreviewProps) {
     return (
         <div className="education-preview preview">
             <h2>Education</h2>
-            <hr />
             {Object.entries(educations).map(
                 ([key, education]) =>
                     education.school && (
@@ -29,7 +29,9 @@ function EducationPreview({ educations }: EducationPreviewProps) {
                                 </div>
                             </div>
                             <div className="description">
-                                <p>{education.description}</p>
+                                <PrettyPrintDescription
+                                    description={education.description}
+                                />
                             </div>
                         </div>
                     ),

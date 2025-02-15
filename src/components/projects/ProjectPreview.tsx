@@ -1,4 +1,5 @@
 import { ProjectDataSection } from "../../App";
+import PrettyPrintDescription from "../PrettyPrintDescription";
 
 type ProjectPreviewProps = {
     projects: ProjectDataSection;
@@ -39,7 +40,9 @@ function ProjectPreview({ projects }: ProjectPreviewProps) {
                                 </div>
                             </div>
                             {project.description && (
-                                <p>{project.description}</p>
+                                <PrettyPrintDescription
+                                    description={project.description}
+                                />
                             )}
                         </div>
                     ),

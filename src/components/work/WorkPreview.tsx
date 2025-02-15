@@ -1,4 +1,6 @@
 import { WorkExperienceDataSection } from "../../App";
+import PrettyPrintDescription from "../PrettyPrintDescription";
+
 type WorkPreviewProps = {
     experiences: WorkExperienceDataSection;
 };
@@ -24,7 +26,9 @@ function WorkPreview({ experiences }: WorkPreviewProps) {
                                 </div>
                             </div>
                             <div className="description">
-                                <p>{experience.description}</p>
+                                <PrettyPrintDescription
+                                    description={experience.description}
+                                />
                             </div>
                         </div>
                     ),
