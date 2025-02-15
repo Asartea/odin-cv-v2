@@ -9,7 +9,8 @@ type PersonalFormProps = {
     ) => void;
 };
 function PersonalForm(props: PersonalFormProps) {
-    const { firstName, lastName, email, phone } = props.data;
+    const { firstName, lastName, email, phone, website, linkedin, github } =
+        props.data;
     const { id, onChange } = props;
 
     return (
@@ -44,6 +45,30 @@ function PersonalForm(props: PersonalFormProps) {
                     value={phone}
                     onChange={onChange}
                     inputType="tel"
+                />
+                <InputGroup
+                    id="website"
+                    dataKey="website"
+                    labelText="Website"
+                    value={website}
+                    onChange={onChange}
+                    inputType="url"
+                />
+                <InputGroup
+                    id="linkedin"
+                    dataKey="linkedin"
+                    labelText="LinkedIn"
+                    value={linkedin}
+                    onChange={onChange}
+                    inputType="url"
+                />
+                <InputGroup
+                    id="github"
+                    dataKey="github"
+                    labelText="GitHub"
+                    value={github}
+                    onChange={onChange}
+                    inputType="url"
                 />
             </form>
         </div>

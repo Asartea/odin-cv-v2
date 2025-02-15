@@ -5,6 +5,8 @@ const defaultData = {
         email: "john.doe@example.com",
         phone: "555-555-5555",
         website: "https://example.com",
+        linkedin: "https://linkedin.com",
+        github: "https://github.com",
     },
     education: {
         [crypto.randomUUID()]: {

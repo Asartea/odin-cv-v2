@@ -11,7 +11,7 @@ type InputGroupProps = {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     dataKey: string;
-    inputType?: "text" | "number" | "email" | "textarea" | "tel";
+    inputType?: "text" | "number" | "email" | "textarea" | "tel" | "url";
 };
 
 function InputGroup(props: InputGroupProps) {
