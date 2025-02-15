@@ -10,14 +10,14 @@ type EducationSectionProps = {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
-    addSection: (section: string) => void;
+    addSection: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 function EducationSection(props: EducationSectionProps) {
     const { educations, onChange, onCollapse, addSection } = props;
 
     return (
-        <div>
-            <h2>Education Section</h2>
+        <div className="section education-section" data-type="education">
+            <h2>Education</h2>
             {Object.entries(educations).map(([key, value]) =>
                 value.collapsed ? (
                     <CollapsedForm
@@ -38,7 +38,7 @@ function EducationSection(props: EducationSectionProps) {
                 ),
             )}
             <Button
-                onClick={() => addSection("education")}
+                onClick={addSection}
                 text="Add Education"
                 className="add-section"
             />

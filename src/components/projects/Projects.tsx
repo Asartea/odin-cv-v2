@@ -10,13 +10,13 @@ type ProjectSectionProps = {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
-    addSection: (section: string) => void;
+    addSection: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 function ProjectSection(props: ProjectSectionProps) {
     const { projects, onChange, onCollapse, addSection } = props;
 
     return (
-        <div>
+        <div className="section project-section" data-type="projects">
             <h2>Projects Section</h2>
             {Object.entries(projects).map(([key, value]) =>
                 value.collapsed ? (
@@ -38,7 +38,7 @@ function ProjectSection(props: ProjectSectionProps) {
                 ),
             )}
             <Button
-                onClick={() => addSection("projects")}
+                onClick={addSection}
                 text="Add Project"
                 className="add-section"
             />

@@ -2,6 +2,7 @@ import WorkForm from "./WorkForm";
 import Button from "../../Button";
 import CollapsedForm from "../CollapsedForm";
 import { WorkExperienceDataSection } from "../../App";
+import React from "react";
 
 type WorkSectionProps = {
     experiences: WorkExperienceDataSection;
@@ -9,7 +10,7 @@ type WorkSectionProps = {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
-    addSection: (section: string) => void;
+    addSection: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 function WorkSection({
     experiences,
@@ -18,7 +19,7 @@ function WorkSection({
     addSection,
 }: WorkSectionProps) {
     return (
-        <div>
+        <div className="section work-section" data-type="work-experience">
             <h2>Work Section</h2>
             {Object.entries(experiences).map(([key, value]) =>
                 value.collapsed ? (
@@ -40,8 +41,9 @@ function WorkSection({
                 ),
             )}
             <Button
-                onClick={() => addSection("work-experience")}
+                onClick={addSection}
                 text={"Add Work Experience"}
+                className={"add-section"}
             ></Button>
         </div>
     );

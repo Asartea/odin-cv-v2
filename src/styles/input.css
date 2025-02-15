@@ -1,0 +1,41 @@
+.input-column {
+    padding: 1em;
+
+    --accent-color: var(--color-emerald-500);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        justify-self: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1em;
+        color: var(--accent-color);
+        border-bottom: 1px solid var(--accent-color);
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    button {
+        display: flex;
+        justify-self: end;
+        padding: .5em 1em;
+        margin-top: 1em;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--accent-color);
+        color: var(--text-color-white);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--color-emerald-700);
+        }
+    }
+
+}

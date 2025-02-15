@@ -12,7 +12,7 @@ function PersonalSection(props: PersonalSectionProps) {
 
     return (
         <div>
-            <h2>Personal Section</h2>
+            <h2>Personal Details</h2>
             <PersonalForm id="personal" data={personal} onChange={onChange} />
         </div>
     );

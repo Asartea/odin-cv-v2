@@ -1,7 +1,5 @@
-import React from "react";
-
 type ButtonProps = {
-    onClick: () => void;
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     text: string;
     className?: string;
 };

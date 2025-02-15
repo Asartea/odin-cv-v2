@@ -2,6 +2,7 @@ import EducationSection from "./education/Education";
 import WorkSection from "./work/Work";
 import ProjectSection from "./projects/Projects";
 import PersonalSection from "./personal/Personal";
+import "../styles/input.css";
 import {
     PersonalData,
     EducationDataSection,
@@ -21,7 +22,7 @@ type InputColumnProps = {
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
     onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
-    addSection: (type: string) => void;
+    addSection: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 function InputColumn(props: InputColumnProps) {

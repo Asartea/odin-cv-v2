@@ -1,3 +1,5 @@
+import "../styles/input_group.css";
+
 type InputGroupProps = {
     id: string;
     placeholder?: string;
@@ -40,6 +42,7 @@ function InputGroup(props: InputGroupProps) {
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    rows={10}
                 />
             ) : (
                 <input

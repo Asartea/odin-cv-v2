@@ -14,7 +14,6 @@ function PersonalForm(props: PersonalFormProps) {
 
     return (
         <div>
-            <h2>Personal Form</h2>
             <form id={id} data-type="personal">
                 <InputGroup
                     id="firstName"

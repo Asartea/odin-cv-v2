@@ -1,5 +1,39 @@
 .content-container {
     display: grid;
+    gap: 5em;
     grid-template-columns: repeat(2, 1fr);
     margin: 1em 2em;
+}
+
+/* print stuff */
+
+@media print {
+
+    .input-column {
+        display: none;
+    }
+
+    .content-container {
+        display: block;
+        width: 100%;
+        margin: 0em;
+    }
+
+    .preview-column {
+        display: block;
+        box-shadow: none;
+    }
+
+    .header {
+        display: block;
+    }
+
+    .position-and-company,
+    .degree-and-school,
+    .time-and-location,
+    .title,
+    .links {
+        display: block;
+    }
+
 }

@@ -14,7 +14,7 @@ function ProjectForm(props: ProjectFormProps) {
     const { id, onChange, onCollapse } = props;
 
     return (
-        <div>
+        <div className="section project-section">
             <form
                 id={id}
                 data-type="projects"

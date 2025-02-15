@@ -11,7 +11,7 @@ function EducationPreview({ educations }: EducationPreviewProps) {
             <h2>Education</h2>
             {Object.entries(educations).map(
                 ([key, education]) =>
-                    education.school && (
+                    education.degree && (
                         <div key={key} className="education">
                             <div className="education-header header">
                                 <div className="degree-and-school">
