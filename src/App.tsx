@@ -2,7 +2,7 @@ import { useState } from "react";
 import InputColumn from "./components/InputColumn.js";
 import PreviewColumn from "./components/PreviewColumn.js";
 import "./styles/index.css";
-import React from "react";
+import defaultData from "./defaultData";
 
 type PersonalData = {
     firstName: string;
@@ -62,46 +62,12 @@ type Data =
     | { type: "projects"; data: ProjectData };
 
 function App() {
-    const [personalData, setPersonalData] = useState<PersonalData>({
-        firstName: "John",
-        lastName: "Doe",
-        email: "test@example.com",
-        phone: "123-456-7890",
-    });
-    const [educationData, setEducationData] = useState<EducationDataSection>({
-        [crypto.randomUUID()]: {
-            degree: "Bachelors",
-            school: "University of Utah",
-            location: "Salt Lake City",
-            start: "2010",
-            end: "2014",
-            subject: "Computer Science",
-            description: "",
-            collapsed: true,
-        },
-    });
-    const [workExperienceData, setWorkExperienceData] =
-        useState<WorkExperienceDataSection>({
-            [crypto.randomUUID()]: {
-                company: "Google",
-                position: "Software Engineer",
-                location: "Mountain View",
-                start: "2014",
-                end: "2018",
-                description: "",
-                collapsed: true,
-            },
-        });
-
-    const [projectData, setProjectData] = useState<ProjectDataSection>({
-        [crypto.randomUUID()]: {
-            title: "Project 1",
-            description: "",
-            github: "",
-            demo: "",
-            collapsed: true,
-        },
-    });
+    const [personalData, setPersonalData] = useState(defaultData.personal);
+    const [educationData, setEducationData] = useState(defaultData.education);
+    const [workExperienceData, setWorkExperienceData] = useState(
+        defaultData.workExperience,
+    );
+    const [projectData, setProjectData] = useState(defaultData.projects);
 
     return (
         <div className="content-container">
