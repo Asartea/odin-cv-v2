@@ -21,6 +21,7 @@ function ProjectSection(props: ProjectSectionProps) {
             {Object.entries(projects).map(([key, value]) =>
                 value.collapsed ? (
                     <CollapsedForm
+                        title={value.title}
                         key={key}
                         dataKey={key}
                         data={{ type: "projects", data: value }}

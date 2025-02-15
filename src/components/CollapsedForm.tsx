@@ -3,24 +3,11 @@ import { Data } from "../App";
 type CollapsedFormProps = {
     data: Data;
     dataKey: string;
+    title: string;
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
 };
 
-function CollapsedForm({ data, dataKey, onClick }: CollapsedFormProps) {
-    let title;
-    switch (data.type) {
-        case "education":
-            title = data.data.school;
-            break;
-        case "work-experience":
-            title = data.data.company;
-            break;
-        case "projects":
-            title = data.data.title;
-            break;
-        default:
-            title = "";
-    }
+function CollapsedForm({ data, dataKey, onClick, title }: CollapsedFormProps) {
     return (
         <div
             className="collapsed-form"
