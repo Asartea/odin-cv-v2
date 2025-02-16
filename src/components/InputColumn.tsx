@@ -3,7 +3,8 @@ import EducationSection from "./education/Education";
 import WorkSection from "./work/Work";
 import ProjectSection from "./projects/Projects";
 import PersonalSection from "./personal/Personal";
-import "../styles/input.css";
+import CustomizationForm from "./customization/CustomizationForm";
+import Button from "./Button";
 import {
     PersonalData,
     EducationDataSection,
@@ -13,8 +14,7 @@ import {
     CVHeaderAlignment,
     FontFamily,
 } from "../App";
-import Button from "../Button";
-import CustomizationForm from "./customization/CustomizationForm";
+import "../styles/InputColumn.css";
 
 type InputColumnProps = {
     personalData: PersonalData;

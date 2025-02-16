@@ -1,5 +1,5 @@
 import EducationForm from "./EducationForm";
-import Button from "../../Button";
+import Button from "../Button";
 import CollapsedForm from "../CollapsedForm";
 
 import { EducationDataSection } from "../../App";

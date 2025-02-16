@@ -1,6 +1,7 @@
 import PersonalPreview from "./personal/PersonalPreview";
 import EducationPreview from "./education/EducationPreview";
 import WorkPreview from "./work/WorkPreview";
+import ProjectPreview from "./projects/ProjectPreview";
 import {
     EducationDataSection,
     PersonalData,
@@ -8,8 +9,7 @@ import {
     ProjectDataSection,
     CVHeaderAlignment,
 } from "../App";
-import ProjectPreview from "./projects/ProjectPreview";
-import "../styles/preview.css";
+import "../styles/PreviewColumn.css";
 
 type PreviewColumnProps = {
     personalData: PersonalData;

@@ -2,6 +2,7 @@ import { PersonalData } from "../../App";
 type PersonalPreviewProps = {
     personal: PersonalData;
 };
+import "../../styles/PersonalPreview.css";
 
 function PersonalPreview({ personal }: PersonalPreviewProps) {
     const { firstName, lastName, email, phone, website, linkedin, github } =

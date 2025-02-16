@@ -1,5 +1,5 @@
 import ProjectForm from "./ProjectForm";
-import Button from "../../Button";
+import Button from "../Button";
 import CollapsedForm from "../CollapsedForm";
 
 import { ProjectDataSection } from "../../App";

@@ -1,4 +1,4 @@
-import "../styles/input_group.css";
+import "../styles/InputGroup.css";
 
 type InputGroupProps = {
     id: string;

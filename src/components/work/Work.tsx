@@ -1,5 +1,5 @@
 import WorkForm from "./WorkForm";
-import Button from "../../Button";
+import Button from "../Button";
 import CollapsedForm from "../CollapsedForm";
 import { WorkExperienceDataSection } from "../../App";
 import React from "react";

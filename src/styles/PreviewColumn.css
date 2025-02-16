@@ -73,22 +73,6 @@
         padding: 0em 1em;
     }
 
-    .personal-preview {
-        background-color: var(--accent-color);
-
-        padding: 1em;
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            flex-wrap: wrap;
-        }
-
-        a {
-            color: var(--text-color-white);
-        }
-    }
 
     .header {
         display: flex;

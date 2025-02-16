@@ -1,5 +1,5 @@
 import { LeftColumn } from "../App";
-import Button from "../Button";
+import Button from "./Button";
 
 type TopMenuProps = {
     active: LeftColumn;
