@@ -21,7 +21,8 @@ button {
         }
     }
 
-    &.active {
+    &:disabled {
         background-color: var(--color-emerald-300);
+        cursor: not-allowed;
     }
 }

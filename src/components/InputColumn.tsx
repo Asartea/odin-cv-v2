@@ -15,6 +15,7 @@ import {
     FontFamily,
 } from "../App";
 import "../styles/InputColumn.css";
+import SwitchActiveTab from "./SwitchActiveTab";
 
 type InputColumnProps = {
     personalData: PersonalData;
@@ -72,18 +73,10 @@ function InputColumn(props: InputColumnProps) {
                 switchActiveColumn={switchActiveColumn}
             />
             <div className="input-content">
-                <div className="switch-active-tabs">
-                    <Button
-                        onClick={switchActiveColumn}
-                        text="Content"
-                        className={`${activeColumn === "input" ? "active" : ""}`}
-                    />
-                    <Button
-                        onClick={switchActiveColumn}
-                        text="Customize"
-                        className={`${activeColumn === "customization" ? "active" : ""}`}
-                    />
-                </div>
+                <SwitchActiveTab
+                    activeColumn={activeColumn}
+                    switchActiveColumn={switchActiveColumn}
+                />
 
                 {activeColumn === "input" ? (
                     <>
