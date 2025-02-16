@@ -1,15 +1,65 @@
 @import url('colors.css');
 
 .preview-column {
-    --accent-color: var(--color-emerald-500);
+
+    font-family: var(--font-family);
+
+    &.top {
+        padding-bottom: 5em;
+    }
+
+    &.left {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+
+        .personal-preview {
+            order: 1;
+        }
+
+        .cv-details {
+            order: 2;
+        }
+
+    }
+
+    &.right {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+
+        .personal-preview {
+            order: 2;
+        }
+
+        .cv-details {
+            order: 1;
+        }
+    }
+
+    &.left,
+    &.right {
+        gap: .5em;
+
+        .contact-info {
+            flex-direction: column;
+        }
+
+        .personal-preview {
+            padding-bottom: 5em;
+        }
+
+        .cv-details {
+            padding-bottom: 5em;
+        }
+
+    }
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: fit-content;
-    padding-bottom: 5em;
 
     h1 {
         font-size: 2rem;
         margin-bottom: 1rem;
-        justify-self: center;
+        text-align: center;
     }
 
     h2 {

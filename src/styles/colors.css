@@ -13,10 +13,13 @@ body {
     --color-emerald-900: oklch(.378 .077 168.94);
     --color-emerald-950: oklch(.262 .051 172.552);
 
-    --color-primary: var(--color-emerald-500);
-    --color-secondary: var(--color-emerald-300);
+    --color-red-500: oklch(.637 .237 25.331);
+    --color-red-700: oklch(.577 .245 27.325);
 
     --text-color: oklch(.141 .005 285.823);
     --text-color-white: oklch(.967 .001 286.375);
     --text-color-light: oklch(.141 .005 285.823);
+
+    --accent-color: rgb(0, 188, 125);
+    --primary-color: var(--color-emerald-500);
 }

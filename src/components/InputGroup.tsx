@@ -9,10 +9,21 @@ type InputGroupProps = {
     recommended?: boolean;
     required?: boolean;
     onChange: (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+        e: React.ChangeEvent<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >,
     ) => void;
     dataKey: string;
-    inputType?: "text" | "number" | "email" | "textarea" | "tel" | "url";
+    options?: string[];
+    inputType?:
+        | "text"
+        | "number"
+        | "email"
+        | "textarea"
+        | "tel"
+        | "url"
+        | "color"
+        | "select";
 };
 
 function InputGroup(props: InputGroupProps) {
@@ -48,6 +59,20 @@ function InputGroup(props: InputGroupProps) {
                     rows={10}
                     required={required}
                 />
+            ) : inputType === "select" ? (
+                <select
+                    id={id}
+                    name={dataKey}
+                    value={value}
+                    onChange={onChange}
+                    required={required}
+                >
+                    {props.options?.map((option) => (
+                        <option key={option} value={option}>
+                            {option}
+                        </option>
+                    ))}
+                </select>
             ) : (
                 <input
                     type={inputType}

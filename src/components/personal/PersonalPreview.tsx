@@ -20,7 +20,7 @@ function PersonalPreview({ personal }: PersonalPreviewProps) {
             </h1>
             <div className="contact-info">
                 {contactInfo.map(({ label, value, type }) =>
-                    type === "email" ? (
+                    !value ? null : type === "email" ? (
                         <a key={label} href={`mailto:${value}`}>
                             {label}
                         </a>

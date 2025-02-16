@@ -66,6 +66,21 @@ type Data =
     | { type: "work-experience"; data: WorkExperienceData }
     | { type: "projects"; data: ProjectData };
 
+type LeftColumn = "input" | "customization";
+
+type CVHeaderAlignment = "left" | "top" | "right";
+
+type FontFamily =
+    | "sans-serif"
+    | "Arial"
+    | "Helvetica"
+    | "serif"
+    | "Times New Roman"
+    | "Times"
+    | "monospace"
+    | "Courier New"
+    | "Courier";
+
 // Taken from https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
 function useStickyState<T>(defaultValue: T, key: string) {
     const [value, setValue] = React.useState(() => {
@@ -96,6 +111,23 @@ function App() {
         "projectData",
     );
 
+    const [leftColumn, setLeftColumn] = useStickyState<LeftColumn>(
+        "input",
+        "leftColumn",
+    );
+    const [cvHeaderAlignment, setCVHeaderAlignment] =
+        useStickyState<CVHeaderAlignment>("top", "cvHeaderAlignment");
+
+    const [currentColor, setCurrentColor] = useStickyState(
+        "rgb(0, 188, 125)",
+        "accentColor",
+    );
+
+    const [currentFont, setCurrentFont] = useStickyState<FontFamily>(
+        "serif",
+        "fontFamily",
+    );
+
     return (
         <>
             <div className="content-container">
@@ -104,21 +136,55 @@ function App() {
                     educationData={educationData}
                     workExperienceData={workExperienceData}
                     projectData={projectData}
+                    activeColumn={leftColumn}
+                    headerAlignment={cvHeaderAlignment}
+                    currentColor={currentColor}
+                    fontFamily={currentFont}
                     handlePersonalDataChange={handlePersonalDataChange}
                     handleSectionChange={handleSectionChange}
                     addSection={addSection}
                     onCollapse={toggleCollapsed}
+                    switchActiveColumn={toggleActiveColumn}
+                    loadDefaultData={loadDefaultData}
+                    clearData={clearData}
+                    switchCVHeaderAlignment={setCVHeaderAlignment}
+                    setCurrentColor={setCurrentColor}
+                    setFontFamily={setCurrentFont}
                 />
                 <PreviewColumn
                     personalData={personalData}
                     educationData={educationData}
                     workExperienceData={workExperienceData}
                     projectData={projectData}
+                    headerAlignment={cvHeaderAlignment}
                 />
             </div>
             <Footer></Footer>
         </>
     );
+
+    function clearData() {
+        setPersonalData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            website: "",
+            linkedin: "",
+            github: "",
+        });
+        setEducationData({});
+        setWorkExperienceData({});
+        setProjectData({});
+    }
+    function loadDefaultData() {
+        setPersonalData(defaultData.personal);
+        setEducationData(defaultData.education);
+        setWorkExperienceData(defaultData.workExperience);
+        setProjectData(defaultData.projects);
+        setCurrentColor(defaultData.currentColor);
+        setCVHeaderAlignment(defaultData.headerAlignment);
+    }
 
     function handlePersonalDataChange(
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -234,25 +300,6 @@ function App() {
         }
     }
 
-    function deleteSection(e: React.MouseEvent<HTMLButtonElement>) {
-        const form = e.currentTarget.closest(".form") as HTMLFormElement;
-        const type = form.dataset.type;
-        const key = form.id;
-        if (type === "education") {
-            const newEducationData = structuredClone(educationData);
-            delete newEducationData[key];
-            setEducationData(newEducationData);
-        } else if (type === "work-experience") {
-            const newWorkExperienceData = structuredClone(workExperienceData);
-            delete newWorkExperienceData[key];
-            setWorkExperienceData(newWorkExperienceData);
-        } else if (type === "projects") {
-            const newProjectData = structuredClone(projectData);
-            delete newProjectData[key];
-            setProjectData(newProjectData);
-        }
-    }
-
     function collapseAllInSection(
         section:
             | EducationDataSection
@@ -304,6 +351,15 @@ function App() {
             setProjectData(newProjectDataSection);
         }
     }
+
+    function toggleActiveColumn(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        if (e.currentTarget.classList.contains("active")) {
+            return;
+        }
+        const column = leftColumn === "input" ? "customization" : "input";
+        setLeftColumn(column);
+    }
 }
 
 export default App;
@@ -317,4 +373,7 @@ export {
     ProjectDataSection,
     DataSection,
     Data,
+    LeftColumn,
+    CVHeaderAlignment,
+    FontFamily,
 };

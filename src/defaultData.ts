@@ -1,10 +1,13 @@
-import { PersonalData, EducationData, WorkExperienceData, ProjectData } from "./App";
+import { PersonalData, EducationData, WorkExperienceData, ProjectData, CVHeaderAlignment, FontFamily } from "./App";
 
 type DefaultData = {
     personal: PersonalData;
     education: Record<string, EducationData>;
     workExperience: Record<string, WorkExperienceData>;
     projects: Record<string, ProjectData>;
+    headerAlignment: CVHeaderAlignment;
+    currentColor: string;
+    fontFamily: FontFamily;
 };
 
 const defaultData: DefaultData = {
@@ -13,9 +16,9 @@ const defaultData: DefaultData = {
         lastName: "Doe",
         email: "john.doe@example.com",
         phone: "555-555-5555",
-        website: "https://example.com",
-        linkedin: "https://linkedin.com",
-        github: "https://github.com",
+        website: "example.com",
+        linkedin: "linkedin.com",
+        github: "github.com",
     },
     education: {
         [crypto.randomUUID()]: {
@@ -66,7 +69,11 @@ const defaultData: DefaultData = {
             skills: "Something, Something else, Another thing",
             collapsed: true,
         }
-    }
+    },
+    currentColor: "rgb(0, 188, 125)",
+    headerAlignment: "top",
+    fontFamily: "serif",
+
 };
 
 export default defaultData

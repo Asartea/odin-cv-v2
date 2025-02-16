@@ -6,6 +6,7 @@ import {
     PersonalData,
     WorkExperienceDataSection,
     ProjectDataSection,
+    CVHeaderAlignment,
 } from "../App";
 import ProjectPreview from "./projects/ProjectPreview";
 import "../styles/preview.css";
@@ -15,19 +16,23 @@ type PreviewColumnProps = {
     educationData: EducationDataSection;
     workExperienceData: WorkExperienceDataSection;
     projectData: ProjectDataSection;
+    headerAlignment: CVHeaderAlignment;
 };
 function PreviewColumn({
     personalData,
     educationData,
     workExperienceData,
     projectData,
+    headerAlignment,
 }: PreviewColumnProps) {
     return (
-        <div className="column preview-column">
+        <div className={`column preview-column ${headerAlignment}`}>
             <PersonalPreview personal={personalData} />
-            <EducationPreview educations={educationData} />
-            <WorkPreview experiences={workExperienceData} />
-            <ProjectPreview projects={projectData} />
+            <div className="cv-details">
+                <EducationPreview educations={educationData} />
+                <WorkPreview experiences={workExperienceData} />
+                <ProjectPreview projects={projectData} />
+            </div>
         </div>
     );
 }
