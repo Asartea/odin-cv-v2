@@ -13,7 +13,8 @@ body {
 
 @media print {
 
-    .input-column {
+    .input-column,
+    footer {
         display: none;
     }
 
@@ -21,6 +22,8 @@ body {
         display: block;
         width: 100%;
         margin: 0em;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
     }
 
     .preview-column {
