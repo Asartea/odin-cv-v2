@@ -128,10 +128,11 @@ function App() {
         "fontFamily",
     );
 
-    // ensure that the accent color changes, if any, get applied now;
+    // ensure that the accent color and font changes, if any, get applied now;
     // otherwise they will only be applied once the customization tab is opened
 
     document.body.style.setProperty("--accent-color", currentColor);
+    document.body.style.setProperty("--font-family", currentFont);
 
     return (
         <>
