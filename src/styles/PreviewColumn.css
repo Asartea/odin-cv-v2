@@ -69,6 +69,10 @@
         border-bottom: 1px solid var(--accent-color);
     }
 
+    a {
+        color: var(--accent-color);
+    }
+
     .preview {
         padding: 0em 1em;
     }

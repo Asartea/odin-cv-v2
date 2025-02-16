@@ -3,14 +3,28 @@
 
     padding: 1em;
 
+    h1 {
+        color: var(--text-color-white)
+    }
+
     .contact-info {
         display: flex;
         justify-content: center;
         gap: 1em;
         flex-wrap: wrap;
+
+        a {
+            color: var(--text-color-white);
+            display: flex;
+            align-items: center;
+
+            svg.icon {
+                width: 1.5em;
+                height: 1.5em;
+                padding-right: .25em;
+            }
+        }
+
     }
 
-    a {
-        color: var(--text-color-white);
-    }
 }
