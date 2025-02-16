@@ -31,7 +31,11 @@ function PersonalPreview({ personal }: PersonalPreviewProps) {
                     ) : (
                         <a
                             key={label}
-                            href={value}
+                            href={
+                                value.startsWith("http")
+                                    ? value
+                                    : `https://${value}`
+                            }
                             target="_blank"
                             rel="noreferrer noopener"
                         >

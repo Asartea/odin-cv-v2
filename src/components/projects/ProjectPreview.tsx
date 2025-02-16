@@ -22,7 +22,13 @@ function ProjectPreview({ projects }: ProjectPreviewProps) {
                                     <p>
                                         {project.github && (
                                             <a
-                                                href={project.github}
+                                                href={
+                                                    project.github.startsWith(
+                                                        "http",
+                                                    )
+                                                        ? project.github
+                                                        : `https://${project.github}`
+                                                }
                                                 target="_blank"
                                             >
                                                 Github
@@ -31,7 +37,13 @@ function ProjectPreview({ projects }: ProjectPreviewProps) {
                                         |{" "}
                                         {project.demo && (
                                             <a
-                                                href={project.demo}
+                                                href={
+                                                    project.demo.startsWith(
+                                                        "http",
+                                                    )
+                                                        ? project.demo
+                                                        : `https://${project.demo}`
+                                                }
                                                 target="_blank"
                                             >
                                                 Demo
