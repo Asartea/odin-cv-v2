@@ -15,7 +15,8 @@ function ProjectPreview({ projects }: ProjectPreviewProps) {
                         <div key={key} className="project">
                             <div className="project-header header">
                                 <div className="title">
-                                    <h3>{project.title}</h3>
+                                    <h3>{project.title} </h3>
+                                    <p>{project.skills}</p>
                                 </div>
                                 <div className="links">
                                     <p>

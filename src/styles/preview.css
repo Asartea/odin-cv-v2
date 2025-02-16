@@ -44,7 +44,8 @@
         margin: 1em 0;
 
         .position-and-company,
-        .degree-and-school {
+        .degree-and-school,
+        .title {
 
             h3,
             p {

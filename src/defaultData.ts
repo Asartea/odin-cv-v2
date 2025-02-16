@@ -1,4 +1,13 @@
-const defaultData = {
+import { PersonalData, EducationData, WorkExperienceData, ProjectData } from "./App";
+
+type DefaultData = {
+    personal: PersonalData;
+    education: Record<string, EducationData>;
+    workExperience: Record<string, WorkExperienceData>;
+    projects: Record<string, ProjectData>;
+};
+
+const defaultData: DefaultData = {
     personal: {
         firstName: "John",
         lastName: "Doe",
@@ -46,6 +55,7 @@ const defaultData = {
             description: "Description of project 1",
             github: "https://github.com",
             demo: "https://example.com",
+            skills: "Something, Something else, Another thing",
             collapsed: true,
         },
         [crypto.randomUUID()]: {
@@ -53,6 +63,7 @@ const defaultData = {
             description: "Description of project 2",
             github: "https://github.com",
             demo: "https://example.com",
+            skills: "Something, Something else, Another thing",
             collapsed: true,
         }
     }

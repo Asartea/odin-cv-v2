@@ -10,7 +10,7 @@ type ProjectFormProps = {
     onCollapse: (e: React.MouseEvent<HTMLElement>) => void;
 };
 function ProjectForm(props: ProjectFormProps) {
-    const { title, description, github, demo } = props.data;
+    const { title, description, github, demo, skills } = props.data;
     const { id, onChange, onCollapse } = props;
 
     return (
@@ -41,6 +41,13 @@ function ProjectForm(props: ProjectFormProps) {
                     value={demo}
                     onChange={onChange}
                     dataKey={"demo"}
+                />
+                <InputGroup
+                    id="skills"
+                    labelText="Skills"
+                    value={skills}
+                    onChange={onChange}
+                    dataKey={"skills"}
                 />
                 <InputGroup
                     id="description"

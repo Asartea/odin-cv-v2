@@ -41,6 +41,7 @@ type ProjectData = {
     description: string;
     github: string;
     demo: string;
+    skills: string;
     collapsed: boolean;
 };
 
@@ -226,9 +227,29 @@ function App() {
                     description: "",
                     github: "",
                     demo: "",
+                    skills: "",
                     collapsed: false,
                 },
             });
+        }
+    }
+
+    function deleteSection(e: React.MouseEvent<HTMLButtonElement>) {
+        const form = e.currentTarget.closest(".form") as HTMLFormElement;
+        const type = form.dataset.type;
+        const key = form.id;
+        if (type === "education") {
+            const newEducationData = structuredClone(educationData);
+            delete newEducationData[key];
+            setEducationData(newEducationData);
+        } else if (type === "work-experience") {
+            const newWorkExperienceData = structuredClone(workExperienceData);
+            delete newWorkExperienceData[key];
+            setWorkExperienceData(newWorkExperienceData);
+        } else if (type === "projects") {
+            const newProjectData = structuredClone(projectData);
+            delete newProjectData[key];
+            setProjectData(newProjectData);
         }
     }
 
