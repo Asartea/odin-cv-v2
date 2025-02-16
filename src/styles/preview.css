@@ -3,6 +3,8 @@
 .preview-column {
     --accent-color: var(--color-emerald-500);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    padding-bottom: 5em;
 
     h1 {
         font-size: 2rem;
@@ -22,7 +24,7 @@
     }
 
     .personal-preview {
-        background-color: var(--color-emerald-500);
+        background-color: var(--accent-color);
 
         padding: 1em;
 
@@ -30,11 +32,11 @@
             display: flex;
             justify-content: center;
             gap: 1em;
-            flex-wrap: wrap
+            flex-wrap: wrap;
         }
 
         a {
-            color: var(--text-color-white)
+            color: var(--text-color-white);
         }
     }
 
