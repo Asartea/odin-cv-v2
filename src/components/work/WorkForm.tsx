@@ -26,27 +26,34 @@ function WorkForm(props: WorkFormProps) {
                     id="company"
                     labelText="Company"
                     value={company}
+                    placeholder="Company Name"
                     onChange={onChange}
+                    recommended={true}
                     dataKey="company"
                 />
                 <InputGroup
                     id="position"
                     labelText="Position"
                     value={position}
+                    placeholder="Software Engineer"
                     onChange={onChange}
+                    required={true}
                     dataKey="position"
                 />
                 <InputGroup
                     id="location"
                     labelText="Location"
                     value={location}
+                    placeholder="City, Country"
                     onChange={onChange}
+                    recommended={true}
                     dataKey="location"
                 />
                 <InputGroup
                     id="start"
                     labelText="Start"
                     value={start}
+                    placeholder="YYYY"
                     onChange={onChange}
                     dataKey="start"
                 />
@@ -54,13 +61,16 @@ function WorkForm(props: WorkFormProps) {
                     id="end"
                     labelText="End"
                     value={end}
+                    placeholder="YYYY"
                     onChange={onChange}
+                    optional={true}
                     dataKey="end"
                 />
                 <InputGroup
                     id="description"
                     labelText="Description"
                     value={description}
+                    placeholder="Description of the work experience"
                     onChange={onChange}
                     optional={true}
                     dataKey="description"

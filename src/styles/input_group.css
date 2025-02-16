@@ -10,6 +10,14 @@
 
     }
 
+    .optional,
+    .recommended,
+    .required {
+        font-size: 0.8em;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
     input,
     textarea {
         padding: .25em;

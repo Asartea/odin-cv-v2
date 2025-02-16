@@ -7,6 +7,7 @@ type InputGroupProps = {
     value: string;
     optional?: boolean;
     recommended?: boolean;
+    required?: boolean;
     onChange: (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => void;
@@ -22,6 +23,7 @@ function InputGroup(props: InputGroupProps) {
         value,
         optional,
         recommended,
+        required,
         onChange,
         dataKey,
         inputType = "text",
@@ -34,6 +36,7 @@ function InputGroup(props: InputGroupProps) {
                 {recommended && (
                     <span className="recommended">Recommended</span>
                 )}
+                {required && <span className="required">Required</span>}
             </label>
             {inputType === "textarea" ? (
                 <textarea
@@ -43,6 +46,7 @@ function InputGroup(props: InputGroupProps) {
                     value={value}
                     onChange={onChange}
                     rows={10}
+                    required={required}
                 />
             ) : (
                 <input
@@ -52,6 +56,7 @@ function InputGroup(props: InputGroupProps) {
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
+                    required={required}
                 />
             )}
         </div>

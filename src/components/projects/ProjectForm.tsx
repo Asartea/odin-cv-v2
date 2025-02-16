@@ -25,34 +25,43 @@ function ProjectForm(props: ProjectFormProps) {
                     id="title"
                     labelText="Project Name"
                     value={title}
+                    placeholder="Project Name"
                     onChange={onChange}
+                    required={true}
                     dataKey={"title"}
                 />
                 <InputGroup
                     id="github"
                     labelText="GitHub"
                     value={github}
+                    placeholder="github.com/yourname/example"
                     onChange={onChange}
+                    recommended={true}
                     dataKey={"github"}
                 />
                 <InputGroup
                     id="demo"
                     labelText="Demo"
                     value={demo}
+                    placeholder="example.com"
                     onChange={onChange}
+                    recommended={true}
                     dataKey={"demo"}
                 />
                 <InputGroup
                     id="skills"
                     labelText="Skills"
                     value={skills}
+                    placeholder="Skill 1, Skill2, Skill3"
                     onChange={onChange}
+                    recommended={true}
                     dataKey={"skills"}
                 />
                 <InputGroup
                     id="description"
                     labelText="Description"
                     value={description}
+                    placeholder="Description of the project"
                     onChange={onChange}
                     optional={true}
                     dataKey={"description"}

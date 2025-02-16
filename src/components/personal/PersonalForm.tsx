@@ -21,13 +21,17 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="firstName"
                     labelText="First Name"
                     value={firstName}
+                    placeholder="John"
                     onChange={onChange}
+                    required={true}
                 />
                 <InputGroup
                     id="lastName"
                     dataKey="lastName"
                     labelText="Last Name"
                     value={lastName}
+                    placeholder="Doe"
+                    required={true}
                     onChange={onChange}
                 />
                 <InputGroup
@@ -35,7 +39,9 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="email"
                     labelText="Email"
                     value={email}
+                    placeholder="example@example.com"
                     onChange={onChange}
+                    recommended={true}
                     inputType="email"
                 />
                 <InputGroup
@@ -43,7 +49,9 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="phone"
                     labelText="Phone"
                     value={phone}
+                    placeholder="(123) 456-7890"
                     onChange={onChange}
+                    optional={true}
                     inputType="tel"
                 />
                 <InputGroup
@@ -51,7 +59,9 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="website"
                     labelText="Website"
                     value={website}
+                    placeholder="example.com"
                     onChange={onChange}
+                    optional={true}
                     inputType="url"
                 />
                 <InputGroup
@@ -59,7 +69,9 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="linkedin"
                     labelText="LinkedIn"
                     value={linkedin}
+                    placeholder="linkedin.com/in/yourprofile"
                     onChange={onChange}
+                    recommended={true}
                     inputType="url"
                 />
                 <InputGroup
@@ -67,7 +79,9 @@ function PersonalForm(props: PersonalFormProps) {
                     dataKey="github"
                     labelText="GitHub"
                     value={github}
+                    placeholder="github.com/yourprofile"
                     onChange={onChange}
+                    recommended={true}
                     inputType="url"
                 />
             </form>
