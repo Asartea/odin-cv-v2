@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import InputColumn from "./components/InputColumn.js";
-import PreviewColumn from "./components/PreviewColumn.js";
-import Footer from "./components/footer/Footer.js";
+import React, { useState, Suspense, lazy } from "react";
 import "./styles/index.css";
 import defaultData from "./defaultData";
+
+// Lazy load components for better initial load performance
+const InputColumn = lazy(() => import("./components/InputColumn.js"));
+const PreviewColumn = lazy(() => import("./components/PreviewColumn.js"));
+const Footer = lazy(() => import("./components/footer/Footer.js"));
 
 type PersonalData = {
     firstName: string;
@@ -135,7 +137,7 @@ function App() {
     document.body.style.setProperty("--font-family", currentFont);
 
     return (
-        <>
+        <Suspense fallback={<div>Loading...</div>}>
             <div className="content-container">
                 <InputColumn
                     personalData={personalData}
@@ -166,7 +168,7 @@ function App() {
                 />
             </div>
             <Footer></Footer>
-        </>
+        </Suspense>
     );
 
     function clearData() {
