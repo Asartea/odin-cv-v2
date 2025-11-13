@@ -13,4 +13,20 @@ export default defineConfig({
             brotliSize: true,
         })
     ],
+    build: {
+        // Enable CSS code splitting
+        cssCodeSplit: true,
+        // Optimize chunk size
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    // Separate vendor chunks for better caching
+                    'react-vendor': ['react', 'react-dom'],
+                    'icons': ['@heroicons/react/16/solid'],
+                }
+            }
+        },
+        // Reduce chunk size warning limit
+        chunkSizeWarningLimit: 600,
+    },
 });
